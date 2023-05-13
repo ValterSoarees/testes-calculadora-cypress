@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora - Atividade Roberio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="btn--dark"></div>
+
+    <div class="container">
+        <div class="calculadora">
+            <h1>Calculadora</h1>
+            <div class="info1"><label for="num1">Primeiro Número:</label></div>
+            <input type="number" id="num1" class="num1">
+            <div class="info2"><label for="num2">Segundo Número:</label></div>
+            <input type="number" id="num2" class="num2">
+            <div class="fileira">
+                <button id="botaoSomar" onclick="somar()"  class="btn">+</button>
+                <button id="botaoSubtracao" onclick="subtracao()" class="btn">-</button>
+                <button id="botaoMultiplicar" onclick="multiplicacao()" class="btn">*</button>
+            </div>
+            <div class="fileira">
+                <button id="botaoDivisao" onclick="divisao()" class="btn">/</button>
+                <button id="botaoExponencial" onclick="exponenciacao()" class="btn">n^</button>
+                <button id="botaoRaiz" onclick="raizQuadrada()" class="btn">√</button>
+            </div>
+            <div class="fileira">
+                <button id="botaoPrimo" onclick="numberPrimo()" class="btn">NP</button>
+                <button id="botaoParImpar" onclick="parImpar()" class="btn">P/I</button>
+                <button id="botaoFatorial" onclick="fatorial()" class="btn">!</button>
+            </div>
+            <button onclick="clearResult()" class="btn limpar">C</button>
+            <div class="divResultado">
+                <label for="calculoFinal">Resultado:</label>
+                <output type="text" id="calculoFinal" class="resultado">
+            </div>
+        </div>
+        <div class="rodape">
+            <p>Calculadora feita por Valter Soares</br>
+                Atividade para disciplina: Gestão e Qualidade de Software</p>
+        </div>
+    </div>
+</body>
+<script src="script.js"></script>
+
+<script>
+
+// FUNÇÃO BOTÃO DARK - LIGHT 
+
+    const calculadora = document.querySelector('.calculadora');
+    const btnDark = document.querySelector('.btn--dark');
+    const num1 = parseInt(document.getElementById("num1").value);
+    const num2 = parseInt(document.getElementById("num2").value);
+
+    btnDark.addEventListener('click', function () {
+        if (calculadora.classList.contains('dark')) {
+            calculadora.classList.remove('dark');
+            this.classList.remove('btn--light');
+            document.querySelector('body').style.background = '#dde1e7';
+            document.querySelector('.rodape').style.color = '#000';
+        } else {
+            calculadora.classList.add('dark');
+            this.classList.add('btn--light');
+            document.querySelector('body').style.background = '#272727';
+            document.querySelector('.rodape').style.color = '#d3dbfc';
+        }
+
+    });
+
+// FUNÇÃO LIMPAR CAMPOS PREENCHIDOS 
+
+    function clearResult() {
+        document.getElementById('calculoFinal').value = '';
+        document.getElementById('num1').value = '';
+        document.getElementById('num2').value = '';
+    }
+
+</script>
+
+</html>
